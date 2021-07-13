@@ -1,12 +1,33 @@
 {
   "files.exclude": {
     ".vscode": true,
-    "yarn.lock": true,
     ".gitignore": true,
     ".prettierignore": true,
-    "lerna.json": true,
     "LICENSE": true,
     "README.md": true,
-    "prettier.config.js": true
+    "prettier.config.js": true,
+    "libs/lithium/node_modules": true,
+    "libs/lithium/types": true,
+    "libs/lithium/LICENSE": true,
+    "lerna-debug.log": true,
+    "old": true,
+    "node_modules": true,
+    "libs/lithium/rollup.config.js": true,
+    "libs/lithium/README.md": true,
+    "libs/lithium/package-lock.json": true,
+    "examples/public.pem": true,
+    "examples/private.pem": true,
+    "examples/types": true,
+    "core/quark/rollup.config.js": true,
+    "core/quark/README.md": true,
+    "core/quark/LICENSE": true,
+    "core/quark/types": true,
+    "core/quark/node_modules": true,
+    "core/atom/rollup.config.js": true,
+    "core/atom/README.md": true,
+    "core/atom/LICENSE": true,
+    "core/atom/types": true,
+    "core/atom/node_modules": true,
+    "yarn.lock": true
   }
 }

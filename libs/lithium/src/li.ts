@@ -1,5 +1,5 @@
 import type Atom from '@treizenith/atom';
-import type { Server as HTTP, RequestListener } from "http";
+import type { Server as HTTP } from "http";
 import type { ky } from 'ky/distribution/types/ky';
 import type { Config, OPT, Server, IOBack, IOFront, Client, OPTBack, Service, ServiceRes } from './general';
 
@@ -13,9 +13,18 @@ export default class Li {
   serviceList = this.atom.reactor.space<Record<string, ReturnType<Service>>>({});
 
   primary?: Server;
-  app?: RequestListener;
 
-  constructor(public ky: ky, public io: IOFront | IOBack, public atom: typeof Atom, public instance: Atom, public $config?: Config, public isClient: boolean = true) { }
+  // will escape from types here because there is hundreds of server libraries that use same api
+  app?: any;
+
+  constructor(
+    public ky: ky,
+    public io: IOFront | IOBack,
+    public atom: typeof Atom,
+    public instance: Atom,
+    public $config?: Config,
+    public isClient: boolean = true
+  ) { }
 
   async login() {
   }
@@ -50,7 +59,49 @@ export default class Li {
 
         }
       }
-    }))
+    }));
+
+    if (this.app) {
+      if (!this.$config?.prod) {
+        this.app.use(async (ctx: any, next: any) => {
+          await next();
+          const rt = ctx.response.get('X-Response-Time');
+          console.log(`${ctx.method} ${ctx.url} - ${rt}`);
+        });
+
+        // x-response-time
+
+        this.app.use(async (ctx: any, next: any) => {
+          const start = Date.now();
+          await next();
+          const ms = Date.now() - start;
+          ctx.set('X-Response-Time', `${ms}ms`);
+        });
+      }
+
+      this.app.use(async (ctx: any) => {
+        if (ctx.url.startsWith("/rpc/")) {
+          let s = ctx.url.split("/");
+          s.shift();
+          s.shift();
+
+          if (s.length != 2) {
+            ctx.body = 400;
+          } else {
+            let q = s[0] + ".methods." + s[1];
+            if (this.serviceList.has(q)) {
+              ctx.body = await ((this.serviceList.get(q)) as any)(q);
+            } else {
+              ctx.body = 404;
+            }
+          }
+        } else {
+          ctx.body = 400;
+        }
+      })
+    } else {
+      throw "APP NEEDED";
+    }
   }
 
   runServer(server: HTTP, options?: OPTBack): Server {
@@ -67,7 +118,7 @@ export default class Li {
     return (this.io as IOFront)(url, options);
   }
 
-  registerApp(app: RequestListener) {
+  registerApp(app: any) {
     this.app = app;
   }
 

@@ -1,11 +1,11 @@
-import quark from '@treizenith/quark';
+import $quark from '@treizenith/quark';
 import $unique from './unique';
 import * as $async from './async';
 import * as $reactor from "./reactor";
 import type { OPT, AtomPlugin, AtomPluginArg, ReturnTypeOf } from "./general";
 declare class Atom {
     #private;
-    static _: typeof quark;
+    static _: typeof $quark;
     static thrower: {
         make(message?: string | undefined, options?: import("./general").ThrowerOpt, strict?: boolean | undefined): never;
         isErr(a: any): boolean;

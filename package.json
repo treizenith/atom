@@ -9,17 +9,10 @@
 		"start": "lerna exec --parallel -- yarn run watch",
 		"update": "lerna exec -- yarn update",
 		"build": "lerna run --parallel --stream build",
-		"watch": "lerna run --parallel --stream watch",
-		"examples": "tsc-watch --noClear -p ./examples/tsconfig.json --onSuccess \"node ./examples/src/index.js\""
+		"watch": "lerna run --parallel --stream watch"
 	},
 	"workspaces": [
 		"core/*",
 		"libs/*"
-	],
-	"dependencies": {
-		"@types/express": "^4.17.12",
-		"cors": "^2.8.5",
-		"express": "^4.17.1",
-		"tsc-watch": "^4.4.0"
-	}
+	]
 }

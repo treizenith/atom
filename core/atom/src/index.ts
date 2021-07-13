@@ -1,4 +1,4 @@
-import quark from '@treizenith/quark';
+import $quark from '@treizenith/quark';
 
 import $unique from './unique';
 import $thrower from './thrower';
@@ -11,7 +11,7 @@ import type {
 	ReturnTypeOf
 } from "./general";
 class Atom {
-	static _ = quark;
+	static _ = $quark;
 	static thrower = $thrower;
 	static async = $async;
 	static unique = $unique;

@@ -58,4 +58,5 @@ export interface Computation<T> {
 export interface Writer {
     (observable: Observable<any>): void;
 }
+export * from "@treizenith/quark";
 //# sourceMappingURL=general.d.ts.map

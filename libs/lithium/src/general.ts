@@ -7,13 +7,12 @@ import type Li from "./li";
 import type Atom from "@treizenith/atom";
 
 export interface Config {
-
+  prod?: boolean
 }
 
 
 export interface ServiceRes {
   name: string;
-  path: string;
   methods: Record<any, Function>;
   hooks?: {
     stop?: Function;

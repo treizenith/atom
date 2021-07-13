@@ -12,4 +12,5 @@ export interface Diff {
     [key: string]: Diff;
     [key: number]: Diff;
 }
+export type { BigSource, Comparison, RoundingMode, BigConstructor, Big } from "big.js";
 //# sourceMappingURL=general.d.ts.map

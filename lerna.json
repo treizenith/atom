@@ -1,5 +1,5 @@
 {
-	"packages": ["core/*", "libs/*"],
+	"packages": ["core/*", "libs/*", "apps/*"],
 	"version": "independent",
 	"npmClient": "yarn",
 	"useWorkspaces": true
