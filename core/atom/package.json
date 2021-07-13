@@ -1,6 +1,6 @@
 {
 	"name": "@treizenith/atom",
-	"version": "2.3.2",
+	"version": "2.3.3",
 	"description": "package for creating modules for universe",
 	"cdn": "dist/index.umd.js",
 	"main": "dist/index.js",
@@ -45,7 +45,7 @@
 		"typescript": "4.1.3"
 	},
 	"dependencies": {
-		"@treizenith/quark": "^1.7.2",
+		"@treizenith/quark": "^1.7.3",
 		"lobx": "^0.2.0-rc24"
 	},
 	"browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead",

@@ -1,6 +1,6 @@
 {
 	"name": "@treizenith/lithium",
-	"version": "3.0.3",
+	"version": "3.0.4",
 	"description": "package for connecting apps for universe",
 	"main": "dist/index.js",
 	"types": "types/index.d.ts",
@@ -47,7 +47,7 @@
 		"utf-8-validate": "^5.0.5"
 	},
 	"dependencies": {
-		"@treizenith/atom": "^2.3.2",
+		"@treizenith/atom": "^2.3.3",
 		"ky": "^0.28.5",
 		"node-fetch": "^2.6.1",
 		"socket.io": "^4.1.2",

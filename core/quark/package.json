@@ -1,6 +1,6 @@
 {
 	"name": "@treizenith/quark",
-	"version": "1.7.2",
+	"version": "1.7.3",
 	"description": "js utility library for exorpit",
 	"cdn": "dist/index.umd.js",
 	"main": "dist/index.js",
